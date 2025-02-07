@@ -19,9 +19,3 @@ This project is a **Hepatitis C Virus (HCV) Prediction** model using machine lea
 - Scikit-Learn  
 - Streamlit  
 - Joblib  
-
-## App Visualization  
-
-Here’s how the HCV Prediction app looks:  
-
-![HCV Prediction App](C:\HCV Prediction\App.png)

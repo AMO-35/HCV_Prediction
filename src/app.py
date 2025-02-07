@@ -20,6 +20,6 @@ sample_data = {
 sample_data_df = pd.DataFrame([sample_data])
 
 # Load the trained model
-model = joblib.load('\models\best_model_with_pipeline.pkl')
+model = joblib.load('models/best_model_with_pipeline.pkl')
 result = model.predict(sample_data_df)
 print(result)

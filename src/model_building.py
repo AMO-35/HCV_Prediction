@@ -39,6 +39,17 @@ X_train[cat_cols] = cat_imputer.fit_transform(X_train[cat_cols])
 X_val[num_cols] = num_imputer.transform(X_val[num_cols])
 X_val[cat_cols] = cat_imputer.transform(X_val[cat_cols])
 
+Q1 = data['Age'].quantile(0.25)
+Q3 = data['Age'].quantile(0.75)
+IQR = Q3 - Q1
+
+lower_bound = Q1 - 1.5 * IQR
+upper_bound = Q3 + 1.5 * IQR
+
+outliers = data[(data['Age'] < lower_bound) | (data['Age'] > upper_bound)]
+print(outliers)
+
+
 from sklearn.preprocessing import StandardScaler, OrdinalEncoder
 
 scaler = StandardScaler()
@@ -58,11 +69,6 @@ log_reg.fit(X_train, y_train)
 pred = log_reg.predict(X_val)
 
 print(log_reg.score(X_val, y_val))
-
-from sklearn.metrics import confusion_matrix
-
-print(confusion_matrix(y_val, pred))
-
 # Build a model using RandomForestClassifier
 from sklearn.ensemble import RandomForestClassifier
 rf = RandomForestClassifier()
@@ -74,7 +80,7 @@ from sklearn.ensemble import GradientBoostingClassifier
 gb = GradientBoostingClassifier()
 gb.fit(X_train, y_train)
 print(gb.score(X_val, y_val))
-
+#Based on the accuracy, the RandomForestClassifier model is selected as the final model
 import joblib
 
 os.makedirs('models', exist_ok=True)

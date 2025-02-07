@@ -46,7 +46,7 @@ input_data = {
 input_data_df = pd.DataFrame([input_data])
 
 # LOAD MODEL & PREDICT
-model = joblib.load('C:\\HCV Prediction\\models\\best_model_with_pipeline.pkl') # Ensure the model is trained and saved
+model = joblib.load('models/best_model_with_pipeline.pkl') # Ensure the model is trained and saved
 
 # Use the model's pipeline to make predictions (it will handle the preprocessing automatically)
 result = model.predict(input_data_df)[0]

@@ -3,19 +3,19 @@ import pandas as pd
 import joblib
 
 # ---- PAGE CONFIG ----
-st.set_page_config(page_title="Hepatitis C Prediction App", page_icon="🩺", layout="centered")
+st.set_page_config(page_title="Hepatitis C Prediction App", layout="centered")
 
 # ---- HEADER ----
-st.markdown("""
-    <h1 style='text-align: center; color: #FF5733;'>Hepatitis C Prediction App</h1>
+st.markdown("""p
+    <h1 style='text-align: center; color: #9B59B6;'>🩺 Hepatitis C Prediction App</h1>
     <p style='text-align: center;'>Predict the category of Hepatitis C based on medical parameters.</p>
-    <hr style='border: 1px solid #FF5733;'>
+    <hr style='border: 1px solid #9B59B6;'>
 """, unsafe_allow_html=True)
 
 # ---- SIDEBAR ----
 st.sidebar.header("User Input Parameters")
 
-Age = st.sidebar.slider("Age", min_value=0, max_value=100, value=32)
+Age = st.sidebar.number_input("Age", min_value=0, max_value=100, value=32, step=1)
 Sex = st.sidebar.selectbox("Sex", ["m", "f"], index=0)
 ALB = st.sidebar.number_input("Albumin (ALB)", min_value=0.0, max_value=100.0, value=38.5)
 ALP = st.sidebar.number_input("Alkaline Phosphatase (ALP)", min_value=0.0, max_value=500.0, value=52.5)
@@ -53,13 +53,13 @@ result = model.predict(input_data_df)[0]
 
 # ---- DISPLAY RESULTS ----
 st.markdown("""
-    <h3 style='text-align: center; color: #3498db;'>User Input Data</h3>
+    <h3 style='text-align: center; color: white;'>User Input Data</h3>
 """, unsafe_allow_html=True)
 st.table(input_data_df)
 
 # ---- RESULT DESIGN ----
 prediction_text = f"Predicted Category: {result}"
-prediction_color = "#e74c3c" if "Hepatitis" in result else "#2ecc71"
+prediction_color = "#9B59B6"
 
 st.markdown(f"""
     <div style='text-align: center; padding: 20px; background-color: {prediction_color}; color: white; border-radius: 10px;'>

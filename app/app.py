@@ -2,17 +2,17 @@ import streamlit as st
 import pandas as pd
 import joblib
 
-# ---- PAGE CONFIG ----
+#PAGE HEADER
 st.set_page_config(page_title="Hepatitis C Prediction App", layout="centered")
 
-# ---- HEADER ----
+# HEADER
 st.markdown("""p
     <h1 style='text-align: center; color: #9B59B6;'>🩺 Hepatitis C Prediction App</h1>
     <p style='text-align: center;'>Predict the category of Hepatitis C based on medical parameters.</p>
     <hr style='border: 1px solid #9B59B6;'>
 """, unsafe_allow_html=True)
 
-# ---- SIDEBAR ----
+#SIDEBAR
 st.sidebar.header("User Input Parameters")
 
 Age = st.sidebar.number_input("Age", min_value=0, max_value=100, value=32, step=1)
@@ -28,7 +28,7 @@ CREA = st.sidebar.number_input("Creatinine (CREA)", min_value=0.0, max_value=105
 GGT = st.sidebar.number_input("Gamma-Glutamyl Transferase (GGT)", min_value=0.0, max_value=800.0, value=12.1)
 PROT = st.sidebar.number_input("Total Protein (PROT)", min_value=0.0, max_value=100.0, value=69.0)
 
-# ---- INPUT DATA ----
+#INPUT DATA
 input_data = {
     "Age": Age,
     "Sex": Sex,
@@ -45,19 +45,19 @@ input_data = {
 }
 input_data_df = pd.DataFrame([input_data])
 
-# ---- LOAD MODEL & PREDICT ----
+# LOAD MODEL & PREDICT
 model = joblib.load('C:\\HCV Prediction\\models\\best_model_with_pipeline.pkl') # Ensure the model is trained and saved
 
 # Use the model's pipeline to make predictions (it will handle the preprocessing automatically)
 result = model.predict(input_data_df)[0]
 
-# ---- DISPLAY RESULTS ----
+#DISPLAY RESULTS
 st.markdown("""
     <h3 style='text-align: center; color: white;'>User Input Data</h3>
 """, unsafe_allow_html=True)
 st.table(input_data_df)
 
-# ---- RESULT DESIGN ----
+# RESULT DESIGN
 prediction_text = f"Predicted Category: {result}"
 prediction_color = "#9B59B6"
 

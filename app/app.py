@@ -6,9 +6,9 @@ import joblib
 st.set_page_config(page_title="Hepatitis C Prediction App", layout="centered")
 
 # HEADER
-st.markdown("""p
+st.markdown("""
     <h1 style='text-align: center; color: #9B59B6;'>🩺 Hepatitis C Prediction App</h1>
-    <p style='text-align: center;'>Predict the category of Hepatitis C based on medical parameters.</p>
+    <p style='text-align: center; color:white;'>Predict the category of Hepatitis C based on medical parameters</p>
     <hr style='border: 1px solid #9B59B6;'>
 """, unsafe_allow_html=True)
 
